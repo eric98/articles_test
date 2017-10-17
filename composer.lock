@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bbd6334ec571315f777d69cfc7f4964",
+    "content-hash": "016f101f7fb8b0ac9e522ea04e472fa3",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -740,6 +740,66 @@
                 "validator"
             ],
             "time": "2017-01-30T22:07:36+00:00"
+        },
+        {
+            "name": "ergare17/articles",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../articles",
+                "reference": "48434b0f69dbb8760417e00aa4cf0829c6b94996",
+                "shasum": null
+            },
+            "require": {
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4.3",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ergare17\\Articles\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ergare17\\Articles\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "check-style": [
+                    "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ],
+                "fix-style": [
+                    "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Garcia Reverter",
+                    "email": "ergare.17@gmail.com",
+                    "homepage": "https://github.com/eric98",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/ergare17/articles",
+            "keywords": [
+                "articles",
+                "ergare17"
+            ]
         },
         {
             "name": "erusev/parsedown",
@@ -4626,7 +4686,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ergare17/articles": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

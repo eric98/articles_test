@@ -178,6 +178,8 @@ return [
          * Package Service Providers...
          */
 
+        Ergare17\Articles\Providers\ArticlesServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
