@@ -150,7 +150,7 @@ class ArticlesTest extends TestCase
             "_token" => csrf_token()
         ]);
 
-        $response->dump();
+//        $response->dump();
         // Comprovo
 //        $response->assertStatus(200);
 //        $response->assertRedirect('articles');
