@@ -74,7 +74,7 @@ class ArticlesTest extends TestCase
         $response = $this->get('/articles/create');
         // Comprovo
         $response->assertStatus(200);
-        $response->assertViewIs('create_article');
+        $response->assertViewIs('articles::create_article');
         $response->assertSeeText('Create Article');
     }
 
@@ -85,7 +85,7 @@ class ArticlesTest extends TestCase
         $response = $this->get('/articles/edit');
         // Comprovo
         $response->assertStatus(200);
-        $response->assertViewIs('edit_article');
+        $response->assertViewIs('articles::edit_article');
         $response->assertSeeText('Edit Article');
     }
 
