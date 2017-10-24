@@ -51,7 +51,7 @@ class ArticlesTest extends TestCase
         // assertSeeText() -> mira si apareix el text que li passes, a la web
         $response->assertSeeText($article->title);
         $response->assertSeeText($article->description);
-        $response->assertSeeText('Article');
+        $response->assertSeeText('Article:');
     }
 
     /**
@@ -137,20 +137,28 @@ class ArticlesTest extends TestCase
 //        ]);
 //    }
 
-//    public function testDeleteEvent()
-//    {
-//        // Preparo
-//        $event = factory(Event::class)->create();
-//        // Executo
-//        $response = $this->delete('/events/' . $event->id);
-//        // Comprovo
-//        //$response->assertStatus(200);
-//        $response->assertRedirect('events');
-//        $response->assertSeeText('Deleted ok!');
-//
-//        $this->assertDatabaseMissing('events', [
-//            'name' => $event->name,
-//            'description' => $event->description,
+    public function testDeleteArticle()
+    {
+        // Preparo
+        $article = factory(Article::class)->create();
+//        dump(Article::all()->count());
+        // Executo
+//        $response = $this->delete('/articles/' . $article->id, [
+//            "csrf-token" => csrf_token()
 //        ]);
-//    }
+        $response = $this->call('DELETE','/articles/' . $article->id, [
+            "_token" => csrf_token()
+        ]);
+
+        $response->dump();
+        // Comprovo
+//        $response->assertStatus(200);
+//        $response->assertRedirect('articles');
+//        $response->assertSeeText('Deleted ok!');
+
+        $this->assertDatabaseMissing('articles', [
+            'title' => $article->title,
+            'description' => $article->description,
+        ]);
+    }
 }
