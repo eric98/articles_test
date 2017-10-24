@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Ergare17\Articles\Models\Article;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(Article::class,50)->create();
     }
 }
