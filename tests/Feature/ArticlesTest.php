@@ -89,25 +89,25 @@ class ArticlesTest extends TestCase
         $response->assertSeeText('Edit Article');
     }
 
-    public function testStoreArticleForm()
-    {
-        // Preparo
-        $article = factory(Article::class)->make();
-        // Executo
-        $response = $this->post('/articles',[
-            'title' => $article->title,
-            'description' => $article->description,
-        ]);
-        // Comprovo
+//    public function testStoreArticleForm()
+//    {
+//        // Preparo
+//        $article = factory(Article::class)->make();
+//        // Executo
+//        $response = $this->post('/articles',[
+//            'title' => $article->title,
+//            'description' => $article->description,
+//        ]);
+//         //Comprovo
 //        $response->assertStatus(200);
 //        $response->assertRedirect('articles/create');
 //        $response->assertSeeText('Created ok!');
-
+//
 //        $this->assertDatabaseHas('articles',[
 //            'title' => $article->title,
 //            'description' => $article->description,
 //        ]);
-    }
+//    }
 
 //    public function testUpdateEventForm()
 //    {
@@ -141,24 +141,25 @@ class ArticlesTest extends TestCase
     {
         // Preparo
         $article = factory(Article::class)->create();
+        $this->withoutExceptionHandling();
 //        dump(Article::all()->count());
         // Executo
 //        $response = $this->delete('/articles/' . $article->id, [
 //            "csrf-token" => csrf_token()
 //        ]);
-        $response = $this->call('DELETE','/articles/' . $article->id, [
-            "_token" => csrf_token()
-        ]);
+        $response = $this->call('DELETE','/articles/' . $article->id);
 
 //        $response->dump();
         // Comprovo
-//        $response->assertStatus(200);
-//        $response->assertRedirect('articles');
-//        $response->assertSeeText('Deleted ok!');
-
         $this->assertDatabaseMissing('articles', [
             'title' => $article->title,
             'description' => $article->description,
         ]);
+
+//        $response->assertStatus(200);
+        $response->assertRedirect('articles');
+//        $response->assertSeeText('Deleted ok!');
+
+
     }
 }
