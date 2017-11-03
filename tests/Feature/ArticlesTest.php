@@ -10,7 +10,13 @@ class ArticlesTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testShowAllEvents()
+    public function setUp()
+    {
+        parent::setUp();
+//        $this->withoutExceptionHandling();
+    }
+
+    public function testShowAllArticles()
     {
         // 3 parts
 
@@ -81,67 +87,69 @@ class ArticlesTest extends TestCase
     public function testShowEditArticleForm()
     {
         // Preparo
+        $article = factory(Article::class)->create();
+
         // Executo
-        $response = $this->get('/articles/edit');
+        $response = $this->get('/articles/edit/'.$article->id);
         // Comprovo
         $response->assertStatus(200);
         $response->assertViewIs('articles::edit_article');
         $response->assertSeeText('Edit Article');
+
+//        $response->assertSeeText($article->title);
+//        $response->assertSeeText($article->description);
     }
 
-//    public function testStoreArticleForm()
-//    {
-//        // Preparo
-//        $article = factory(Article::class)->make();
-//        // Executo
-//        $response = $this->post('/articles',[
-//            'title' => $article->title,
-//            'description' => $article->description,
-//        ]);
-//         //Comprovo
-//        $response->assertStatus(200);
+    public function testStoreArticleForm()
+    {
+        // Preparo
+        $article = factory(Article::class)->make();
+        // Executo
+        $response = $this->post('/articles',[
+            'title' => $article->title,
+            'description' => $article->description,
+        ]);
+         //Comprovo
 //        $response->assertRedirect('articles/create');
 //        $response->assertSeeText('Created ok!');
-//
-//        $this->assertDatabaseHas('articles',[
-//            'title' => $article->title,
-//            'description' => $article->description,
-//        ]);
-//    }
 
-//    public function testUpdateEventForm()
-//    {
-//        // Preparo
-//        $event = factory(Event::class)->create();
-//        // Executo
-//        $newEvent = factory(Event::class)->make();
-//        $response = $this->patch('/events/' . $event->id,[
-//            'name' => $newEvent->name,
-//            'description' => $newEvent->description,
-//        ]);
-//        // Comprovo
-//        $response->assertStatus(200);
-//        $response->assertRedirect('events/create');
-//        $response->assertSeeText('Edited ok!');
-//
-//        $this->assertDatabaseHas('events',[
-//            'id' =>  $event->id,
-//            'name' => $newEvent->name,
-//            'description' => $newEvent->description,
-//        ]);
-//
-//        $this->assertDatabaseMissing('events',[
-//            'id' =>  $event->id,
-//            'name' => $event->name,
-//            'description' => $event->description,
-//        ]);
-//    }
+        $this->assertDatabaseHas('articles',[
+            'title' => $article->title,
+            'description' => $article->description,
+        ]);
+    }
+
+    public function testUpdateArticleForm()
+    {
+        // Preparo
+        $article = factory(Article::class)->create();
+        // Executo
+        $newArticle = factory(Article::class)->make();
+        $response = $this->put('/articles/' . $article->id,[
+            'title' => $newArticle->title,
+            'description' => $newArticle->description,
+        ]);
+        // Comprovo
+        $response->assertRedirect('articles/edit');
+        $response->assertSeeText('Edited ok!');
+
+        $this->assertDatabaseHas('articles',[
+            'id' =>  $article->id,
+            'title' => $newArticle->title,
+            'description' => $newArticle->description,
+        ]);
+
+        $this->assertDatabaseMissing('articles',[
+            'id' =>  $article->id,
+            'title' => $article->title,
+            'description' => $article->description,
+        ]);
+    }
 
     public function testDeleteArticle()
     {
         // Preparo
         $article = factory(Article::class)->create();
-        $this->withoutExceptionHandling();
 //        dump(Article::all()->count());
         // Executo
 //        $response = $this->delete('/articles/' . $article->id, [
