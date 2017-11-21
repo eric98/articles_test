@@ -3,13 +3,14 @@
   "scripts": {
     "bower": "cd node_modules/admin-lte;../bower/bin/bower install -f",
     "dev": "npm run development",
-    "development": "npm run bower;cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run bower;cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch-poll": "npm run bower;npm run watch -- --watch-poll",
-    "hot": "npm run bower;cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
-    "production": "npm run bower;cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "lint": "./node_modules/.bin/eslint --ext .js,.vue resources/assets/js"
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint": "./node_modules/.bin/eslint --ext .js,.vue resources/assets/js",
+    "test": "mocha-webpack --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require articles/tests/Javascript/setup.js articles/tests/Javascript/**/*.spec.js"
   },
   "devDependencies": {
     "acacha-forms": "^1.0.0",
@@ -21,19 +22,27 @@
     "bower": "^1.8.2",
     "cross-env": "^5.0.1",
     "eslint": "^3.14.1",
+    "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-html": "^2.0.0",
-    "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
+    "expect": "^21.2.1",
     "font-awesome": "^4.7.0",
     "icheck": "^1.0.2",
     "ionicons": "^3.0.0",
     "jquery": "^3.1.1",
+    "jsdom": "^11.4.0",
+    "jsdom-global": "^3.0.2",
     "laravel-mix": "^1.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
+    "mocha-webpack": "^1.0.1",
     "toastr": "^2.1.2",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "vue-test-utils": "^1.0.0-beta.5"
   }
 }

@@ -34,8 +34,12 @@
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li class="header">Articles</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="/articles"><i class='fa fa-link'></i> <span>Articles PHP</span></a></li>
+            <li><a href="/articles_php"><i class='fa fa-link'></i> <span>Articles PHP</span></a></li>
             <li><a href="/home"><i class='fa fa-link'></i> <span>Articles Vue</span></a></li>
+            <li class="header">Settings</li>
+            <li><a href="/tokens"><i class='fa fa-link'></i> <span>Tokens</span></a></li>
+            <li class="header">Proves</li>
+            <li><a href="/proves"><i class='fa fa-link'></i> <span>Proves</span></a></li>
 
         </ul><!-- /.sidebar-menu -->
     </section>
