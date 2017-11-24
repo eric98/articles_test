@@ -4,13 +4,12 @@ namespace Tests\Browser;
 
 use Ergare17\Articles\Models\Article;
 use Faker\Factory;
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
 
 class ArticlesTest extends DuskTestCase
 {
-
     use DatabaseMigrations;
 
     /**
@@ -23,8 +22,8 @@ class ArticlesTest extends DuskTestCase
                 ->assertSee('Create Article')
                 ->assertVisible('input#title')
                 ->assertVisible('textarea#description')
-                ->assertInputValue('input#title','')
-                ->assertInputValue('textarea#description','')
+                ->assertInputValue('input#title', '')
+                ->assertInputValue('textarea#description', '')
                 ->pause(3000);
         });
     }
@@ -41,8 +40,8 @@ class ArticlesTest extends DuskTestCase
                 ->assertSee('Edit Article')
                 ->assertVisible('input#title')
                 ->assertVisible('textarea#description')
-                ->assertInputValue('input#title',$article->title)
-                ->assertInputValue('textarea#description',$article->description)
+                ->assertInputValue('input#title', $article->title)
+                ->assertInputValue('textarea#description', $article->description)
                 ->pause(3000);
         });
     }
@@ -54,7 +53,7 @@ class ArticlesTest extends DuskTestCase
     {
         $faker = Factory::create();
 
-        $this->browse(function (Browser $browser) use ($faker){
+        $this->browse(function (Browser $browser) use ($faker) {
             $browser->visit('/articles/create')
                 ->type('title', $faker->sentence())
                 ->type('description', $faker->paragraph())
@@ -74,7 +73,7 @@ class ArticlesTest extends DuskTestCase
 
         $faker = Factory::create();
 
-        $this->browse(function (Browser $browser) use ($faker){
+        $this->browse(function (Browser $browser) use ($faker) {
             $browser->visit('/articles/create')
                 ->type('title', $faker->sentence())
                 ->type('description', $faker->paragraph())
