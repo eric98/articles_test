@@ -12,8 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Article::class, 50)->create();
-
         Artisan::call('passport:install');
+
+        create_admin_user();
+
+        initialize_articles_permissions();
+
+        first_user_as_articles_manager();
+
+        factory(Article::class, 50)->create();
     }
 }
