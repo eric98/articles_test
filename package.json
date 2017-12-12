@@ -13,14 +13,14 @@
     "test": "mocha-webpack --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require articles/tests/Javascript/setup.js articles/tests/Javascript/**/*.spec.js"
   },
   "devDependencies": {
-    "acacha-forms": "^1.0.0",
+    "acacha-forms": "^1.0.8",
     "admin-lte": "^2.4.2",
     "axios": "^0.16.2",
     "babel-eslint": "^7.1.1",
     "bootstrap-less": "3.3.7",
     "bootstrap-sass": "3.3.7",
     "bower": "^1.8.2",
-    "cross-env": "^5.0.1",
+    "cross-env": "^5.1.1",
     "eslint": "^3.14.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^2.0.7",
@@ -33,19 +33,20 @@
     "icheck": "^1.0.2",
     "ionicons": "^3.0.0",
     "jquery": "^3.1.1",
-    "jsdom": "^11.4.0",
+    "jsdom": "^11.5.1",
     "jsdom-global": "^3.0.2",
-    "laravel-mix": "^1.0",
+    "laravel-mix": "^1.7.2",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "lodash": "^4.17.4",
     "mocha": "^4.0.1",
     "mocha-webpack": "^1.0.1",
-    "toastr": "^2.1.2",
-    "vue": "^2.1.10",
-    "vue-test-utils": "^1.0.0-beta.5"
+    "toastr": "^2.1.4",
+    "vue": "^2.5.9",
+    "vue-test-utils": "^1.0.0-beta.7"
   },
   "dependencies": {
-    "vue-multiselect": "^2.0.6"
+    "quill": "^1.3.4",
+    "vue-multiselect": "^2.0.8"
   }
 }
